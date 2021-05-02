@@ -1,0 +1,23 @@
+h2 {
+  color: blue;
+}
+
+.boxmodel {
+  border: 5px solid red;
+  display: inline-block;
+  padding: 5px 20px 5px 20px;
+  margin: 0px 20px;
+  width: 33px;
+  height: 55px;
+  /* padding border margin은 개발자툴에서 보는게 가능함 */
+}
+
+p {
+  font-size: 15px;
+}
+
+span {
+  /* em: 3 times than containing element */
+  /* rem: 3 times than root( html) element */
+  font-size: 3em;
+}
