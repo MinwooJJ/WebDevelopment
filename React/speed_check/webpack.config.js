@@ -2,8 +2,8 @@ const path = require("path");
 const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = {
-  name: "word-chain-setting",
-  mode: "development", // publich option -> production
+  name: "speed-check-setting",
+  mode: "development", // publish option -> production
   devtool: "eval",
   resolve: {
     extensions: [".js", ".jsx"],
@@ -42,7 +42,7 @@ module.exports = {
     ],
   },
   // extension, if you need to add more options
-  // for example, add debug in all module components
+  // add debug in all module components
   // plugins: [new webpack.LoaderOptionsPlugin({ debug: true })],
   plugins: [new RefreshWebpackPlugin()],
   output: {
