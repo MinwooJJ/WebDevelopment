@@ -1,21 +1,20 @@
 const path = require("path");
-const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = {
-  name: "word-chain-setting",
+  name: "minesearch-dev",
   mode: "development", // publich option -> production
-  devtool: "eval",
+  devtool: "inline-source-map",
   resolve: {
     extensions: [".js", ".jsx"],
   },
   entry: {
-    app: ["./client"], // already webpack knows about wordchain.jsx file
-  }, // Input
-
+    app: "./client", // already webpack knows about wordchain.jsx file
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.jsx?$/,
         loader: "babel-loader",
         options: {
           // Adding all browsers can affect performance, so adding only the browsers you want is important.
@@ -25,33 +24,29 @@ module.exports = {
             [
               "@babel/preset-env",
               {
-                targets: {
-                  browsers: ["> 5% in KR", "last 2 chrome versions"], // browserslists
-                },
+                targets: { browsers: ["last 2 chrome versions"] },
                 debug: true,
               },
             ],
             "@babel/preset-react",
           ],
-          plugins: [
-            "@babel/plugin-proposal-class-properties",
-            "react-refresh/babel",
-          ],
+          plugins: ["react-refresh/babel"],
         },
+        exclude: path.join(__dirname, "node_modules"),
       },
     ],
   },
   // extension, if you need to add more options
   // for example, add debug in all module components
   // plugins: [new webpack.LoaderOptionsPlugin({ debug: true })],
-  plugins: [new RefreshWebpackPlugin()],
+  plugins: [new ReactRefreshWebpackPlugin()],
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "app.js",
-    publicPath: "/dist/",
-  }, // Output
+    filename: "[name].js",
+    publicPath: "/dist",
+  },
   devServer: {
-    publicPath: "/dist/",
+    publicPath: "/dist",
     hot: true,
   },
 };
