@@ -12,11 +12,7 @@ function App() {
     svg
       .selectAll('circle')
       .data(data)
-      .join(
-        (enter) => enter.append('circle').attr('class', 'new'),
-        (update) => update.attr('class', 'updated'),
-        (exit) => exit.remove()
-      )
+      .join('circle')
       .attr('r', (value) => value)
       .attr('cx', (value) => value * 2)
       .attr('cy', (value) => value * 2)
